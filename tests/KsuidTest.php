@@ -62,4 +62,23 @@ class KsuidTest extends TestCase
             $datetime->format("Y-m-d H:i:s")
         );
     }
+
+    public function testShouldCreateFromBytes()
+    {
+        $binary = (new Base62)->decode("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+        $ksuid = Ksuid::fromBytes($binary);
+        $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
+        $this->assertEquals($binary, $ksuid->bytes());
+        $this->assertEquals(94985761, $ksuid->timestamp());
+        $this->assertEquals(
+            "d7b6fe8cd7cff211704d8e7b9421210b",
+            bin2hex($ksuid->payload())
+        );
+        $datetime = $ksuid->datetime();
+        $datetime->setTimeZone(new DateTimeZone("UTC"));
+        $this->assertEquals(
+            "2017-05-17 01:49:21",
+            $datetime->format("Y-m-d H:i:s")
+        );
+    }
 }
