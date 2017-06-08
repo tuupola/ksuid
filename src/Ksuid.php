@@ -66,9 +66,7 @@ class Ksuid
     {
         $encoded = (new Base62)->encode($this->bytes());
         if ($padding = self::ENCODED_SIZE - strlen($encoded)) {
-            /* This alters the payload value but does not affect sorting. */
-            /* Probably does not matter since payload is random. */
-            $encoded .= str_repeat("0", $padding);
+            $encoded = str_repeat("0", $padding) . $encoded;
         }
         return $encoded;
     }

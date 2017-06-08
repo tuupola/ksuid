@@ -49,6 +49,7 @@ class KsuidTest extends TestCase
     public function testShouldCreateFromString()
     {
         $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+        $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals(94985761, $ksuid->timestamp());
         $this->assertEquals(
             "d7b6fe8cd7cff211704d8e7b9421210b",
