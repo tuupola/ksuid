@@ -17,6 +17,8 @@ namespace Tuupola\Ksuid;
 
 use PHPUnit\Framework\TestCase;
 use Tuupola\Ksuid;
+use Tuupola\Base62;
+use DateTimeZone;
 
 class KsuidTest extends TestCase
 {
@@ -52,9 +54,8 @@ class KsuidTest extends TestCase
             "d7b6fe8cd7cff211704d8e7b9421210b",
             bin2hex($ksuid->payload())
         );
-        $utc = new \DateTimeZone("UTC");
-        $datetime = $ksuid->time();
-        $datetime->setTimeZone($utc);
+        $datetime = $ksuid->datetime();
+        $datetime->setTimeZone(new DateTimeZone("UTC"));
         $this->assertEquals(
             "2017-05-17 01:49:21",
             $datetime->format("Y-m-d H:i:s")
