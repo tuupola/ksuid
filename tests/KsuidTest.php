@@ -18,6 +18,7 @@ namespace Tuupola\Ksuid;
 use PHPUnit\Framework\TestCase;
 use Tuupola\Ksuid;
 use Tuupola\Base62;
+use DateTimeImmutable;
 use DateTimeZone;
 
 class KsuidTest extends TestCase
@@ -51,12 +52,16 @@ class KsuidTest extends TestCase
         $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals(94985761, $ksuid->timestamp());
+        $this->assertEquals(1494985761, $ksuid->unixtime());
         $this->assertEquals(
             "d7b6fe8cd7cff211704d8e7b9421210b",
             bin2hex($ksuid->payload())
         );
-        $datetime = $ksuid->datetime();
-        $datetime->setTimeZone(new DateTimeZone("UTC"));
+
+        $datetime = (new DateTimeImmutable)
+            ->setTimestamp($ksuid->unixtime())
+            ->setTimeZone(new DateTimeZone("UTC"));
+
         $this->assertEquals(
             "2017-05-17 01:49:21",
             $datetime->format("Y-m-d H:i:s")
@@ -67,15 +72,20 @@ class KsuidTest extends TestCase
     {
         $binary = (new Base62)->decode("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
         $ksuid = Ksuid::fromBytes($binary);
+
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals($binary, $ksuid->bytes());
         $this->assertEquals(94985761, $ksuid->timestamp());
+        $this->assertEquals(1494985761, $ksuid->unixtime());
         $this->assertEquals(
             "d7b6fe8cd7cff211704d8e7b9421210b",
             bin2hex($ksuid->payload())
         );
-        $datetime = $ksuid->datetime();
-        $datetime->setTimeZone(new DateTimeZone("UTC"));
+
+        $datetime = (new DateTimeImmutable)
+            ->setTimestamp($ksuid->unixtime())
+            ->setTimeZone(new DateTimeZone("UTC"));
+
         $this->assertEquals(
             "2017-05-17 01:49:21",
             $datetime->format("Y-m-d H:i:s")

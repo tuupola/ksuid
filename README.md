@@ -32,12 +32,14 @@ print $ksuid; /* p6UEyCc8D8ecLijAI5zVwOTP3D0 */
 $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
 
 print $ksuid->timestamp(); /* 94985761 */
+print $ksuid->unixtime(); /* 1494985761 */
 print bin2hex($ksuid->payload()); /* d7b6fe8cd7cff211704d8e7b9421210b */
 
-$datetime = $ksuid->time();
-$datetime->setTimeZone(new DateTimeZone("UTC"));
-print $datetime->format("Y-m-d H:i:s"); /* 2017-05-17 01:49:21 */
+$datetime = (new \DateTimeImmutable)
+    ->setTimestamp($ksuid->unixtime())
+    ->setTimeZone(new \DateTimeZone("UTC"));
 
+print $datetime->format("Y-m-d H:i:s"); /* 2017-05-17 01:49:21 */
 ```
 
 ## Testing

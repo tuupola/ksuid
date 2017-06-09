@@ -81,12 +81,10 @@ class Ksuid
         return $this->timestamp;
     }
 
-    public function datetime()
+    public function unixtime()
     {
-        $unixtime = $this->timestamp + self::EPOCH;
-        return new \DateTime("@{$unixtime}");
+        return $this->timestamp + self::EPOCH;
     }
-
 
     public function __toString()
     {
