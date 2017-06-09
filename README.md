@@ -15,7 +15,7 @@ This library implements the [K-Sortable Globally Unique IDs](https://github.com/
 Install with [composer](https://getcomposer.org/).
 
 ``` bash
-$ composer require tuupola/ksuid:dev-master
+$ composer require tuupola/ksuid
 ```
 
 ## Usage
