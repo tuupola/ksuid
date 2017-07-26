@@ -7,7 +7,6 @@ This library implements the [K-Sortable Globally Unique IDs](https://github.com/
 [![Latest Version](https://img.shields.io/packagist/v/tuupola/ksuid.svg?style=flat-square)](https://packagist.org/packages/tuupola/ksuid)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/tuupola/ksuid/master.svg?style=flat-square)](https://travis-ci.org/tuupola/ksuid)
-[![HHVM Status](https://img.shields.io/hhvm/tuupola/ksuid.svg?style=flat-square)](http://hhvm.h4cc.de/package/tuupola/ksuid)
 [![Coverage](http://img.shields.io/codecov/c/github/tuupola/ksuid.svg?style=flat-square)](https://codecov.io/github/tuupola/ksuid)
 
 ## Install
