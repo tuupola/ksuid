@@ -21,7 +21,7 @@ before_script:
     - travis_retry composer install --no-interaction
 
 script:
-    - composer test
+    - make travis
 
 after_success:
     - if [[ $TRAVIS_PHP_VERSION != "hhvm" ]]; then bash <(curl -s https://codecov.io/bash); fi
