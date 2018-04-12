@@ -23,6 +23,11 @@ use DateTimeZone;
 
 class KsuidTest extends TestCase
 {
+    public function testGenerateShouldReturnKsuidInstance()
+    {
+        $this->assertInstanceOf(Ksuid::class, Ksuid::generate());
+    }
+
     public function testShouldBeTrue()
     {
         $this->assertTrue(true);
