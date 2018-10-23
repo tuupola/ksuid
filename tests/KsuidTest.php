@@ -76,6 +76,8 @@ class KsuidTest extends TestCase
     public function testShouldCreateFromBytes()
     {
         $binary = (new Base62)->decode("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+        $binary = ltrim($binary, "\0x00");
+
         $ksuid = Ksuid::fromBytes($binary);
 
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);

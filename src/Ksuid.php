@@ -51,6 +51,7 @@ class Ksuid
 
     public static function fromBytes($bytes)
     {
+        $bytes = ltrim($bytes, "\0x00");
         $timestamp = substr($bytes, 0, self::TIMESTAMP_SIZE);
         $timestamp = unpack("Nuint", $timestamp);
         $payload = substr($bytes, self::TIMESTAMP_SIZE, self::PAYLOAD_SIZE);
