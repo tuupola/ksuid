@@ -30,7 +30,7 @@ watch:
 
 test: lint unit static
 
-travis: lint unit static
+travis: lint unit
 
 all: deps test
 
