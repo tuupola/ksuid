@@ -15,7 +15,9 @@ matrix:
     allow_failures:
         - php: nightly
     include:
-        - php: 7.0
+        - php: 7.1
+          env: DEPENDENCIES=lowest
+        - php: 7.2
           env: DEPENDENCIES=lowest
 
 before_script:
