@@ -38,11 +38,6 @@ class Ksuid
         }
     }
 
-    public static function generate()
-    {
-        return new self;
-    }
-
     public function bytes()
     {
         return pack("N", $this->timestamp) . $this->payload;
