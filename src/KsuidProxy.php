@@ -17,18 +17,18 @@ namespace Tuupola;
 
 class KsuidProxy
 {
-    public static function generate($payload = null, $timestamp = null): Ksuid
+    public static function generate($payload = null, $timestamp = null)
     {
         return new Ksuid($payload, $timestamp);
     }
 
-    public static function fromString(string $string): Ksuid
+    public static function fromString(string $string)
     {
         $decoded = (new Base62)->decode($string);
         return self::fromBytes($decoded);
     }
 
-    public static function fromBytes(string $bytes): Ksuid
+    public static function fromBytes(string $bytes)
     {
         $bytes = ltrim($bytes, "\0x00");
         $timestamp = substr($bytes, 0, Ksuid::TIMESTAMP_SIZE);
