@@ -44,11 +44,11 @@ If you prefer static syntax you can use the provided static proxy.
 ```php
 use Tuupola\KsuidProxy as Ksuid;
 
-$ksuid = KsuidProxy::generate();
-$ksuid = KsuidProxy::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+$ksuid = Ksuid::generate();
+$ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
 
 $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
-$ksuid = KsuidProxy::fromBytes($binary);
+$ksuid = Ksuid::fromBytes($binary);
 ```
 
 ## Testing
