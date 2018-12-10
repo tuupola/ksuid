@@ -13,7 +13,7 @@
  *
  */
 
-namespace Tuupola\Ksuid;
+namespace Tuupola;
 
 use PHPUnit\Framework\TestCase;
 use Tuupola\Ksuid;
@@ -54,7 +54,7 @@ class KsuidTest extends TestCase
     /* https://segment.com/blog/a-brief-history-of-the-uuid/ */
     public function testShouldCreateFromString()
     {
-        $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+        $ksuid = KsuidProxy::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals(94985761, $ksuid->timestamp());
         $this->assertEquals(1494985761, $ksuid->unixtime());
@@ -76,7 +76,7 @@ class KsuidTest extends TestCase
     public function testShouldCreateFromBytes()
     {
         $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
-        $ksuid = Ksuid::fromBytes($binary);
+        $ksuid = KsuidProxy::fromBytes($binary);
 
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals($binary, $ksuid->bytes());
