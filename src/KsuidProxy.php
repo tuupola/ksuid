@@ -22,13 +22,13 @@ class KsuidProxy
         return new Ksuid($payload, $timestamp);
     }
 
-    public static function fromString(string $string)
+    public static function fromString($string)
     {
         $decoded = (new Base62)->decode($string);
         return self::fromBytes($decoded);
     }
 
-    public static function fromBytes(string $bytes)
+    public static function fromBytes($bytes)
     {
         $bytes = ltrim($bytes, "\0x00");
         $timestamp = substr($bytes, 0, Ksuid::TIMESTAMP_SIZE);
