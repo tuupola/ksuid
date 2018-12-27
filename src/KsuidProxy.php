@@ -33,9 +33,9 @@ namespace Tuupola;
 
 class KsuidProxy
 {
-    public static function generate($payload = null, $timestamp = null)
+    public static function generate($timestamp = null, $payload = null)
     {
-        return new Ksuid($payload, $timestamp);
+        return new Ksuid($timestamp, $payload);
     }
 
     public static function fromString($string)
@@ -50,6 +50,6 @@ class KsuidProxy
         $timestamp = substr($bytes, 0, Ksuid::TIMESTAMP_SIZE);
         $timestamp = unpack("Nuint", $timestamp);
         $payload = substr($bytes, Ksuid::TIMESTAMP_SIZE, Ksuid::PAYLOAD_SIZE);
-        return new Ksuid($payload, $timestamp["uint"]);
+        return new Ksuid($timestamp["uint"], $payload);
     }
 }

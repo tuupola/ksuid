@@ -41,7 +41,7 @@ class Ksuid
     private $timestamp;
     private $payload;
 
-    public function __construct($payload = null, $timestamp = null)
+    public function __construct($timestamp = null, $payload = null)
     {
         $this->payload = $payload;
         $this->timestamp = $timestamp;
