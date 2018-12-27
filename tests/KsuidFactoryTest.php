@@ -42,10 +42,10 @@ class KsuidFactoryTest extends TestCase
         $this->assertTrue(true);
     }
 
-    // public function testGenerateShouldReturnKsuidInstance()
-    // {
-    //     $this->assertInstanceOf(Ksuid::class, KsuidFactory::generate());
-    // }
+    public function testShouldCreateKsuidInstance()
+    {
+        $this->assertInstanceOf(Ksuid::class, KsuidFactory::create());
+    }
 
     /* https://segment.com/blog/a-brief-history-of-the-uuid/ */
     public function testShouldCreateFromString()
