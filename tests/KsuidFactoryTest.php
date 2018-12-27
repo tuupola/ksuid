@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use DateTimeZone;
 
-class KsuidProxyTest extends TestCase
+class KsuidFactoryTest extends TestCase
 {
     public function testShouldBeTrue()
     {
@@ -44,13 +44,13 @@ class KsuidProxyTest extends TestCase
 
     public function testGenerateShouldReturnKsuidInstance()
     {
-        $this->assertInstanceOf(Ksuid::class, KsuidProxy::generate());
+        $this->assertInstanceOf(Ksuid::class, KsuidFactory::generate());
     }
 
     /* https://segment.com/blog/a-brief-history-of-the-uuid/ */
     public function testShouldCreateFromString()
     {
-        $ksuid = KsuidProxy::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+        $ksuid = KsuidFactory::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals(94985761, $ksuid->timestamp());
         $this->assertEquals(1494985761, $ksuid->unixtime());
@@ -72,7 +72,7 @@ class KsuidProxyTest extends TestCase
     public function testShouldCreateFromBytes()
     {
         $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
-        $ksuid = KsuidProxy::fromBytes($binary);
+        $ksuid = KsuidFactory::fromBytes($binary);
 
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals($binary, $ksuid->bytes());

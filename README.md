@@ -39,10 +39,10 @@ $datetime = (new \DateTimeImmutable)
 print $datetime->format("Y-m-d H:i:s"); /* 2017-05-17 01:49:21 */
 ```
 
-If you prefer static syntax you can use the provided static proxy.
+If you prefer static syntax you can use the provided factory.
 
 ```php
-use Tuupola\KsuidProxy as Ksuid;
+use Tuupola\KsuidFactory as Ksuid;
 
 $ksuid = Ksuid::generate();
 $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");

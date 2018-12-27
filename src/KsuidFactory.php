@@ -31,7 +31,7 @@ SOFTWARE.
 
 namespace Tuupola;
 
-class KsuidProxy
+class KsuidFactory
 {
     public static function generate($timestamp = null, $payload = null)
     {
