@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## [0.2.0](https://github.com/tuupola/ksuid/compare/0.1.4...0.2.0) - unreleased
+## [0.2.0](https://github.com/tuupola/ksuid/compare/0.1.4...0.2.0) - 2018-12-27
 ### Changed
 - Switched order of timestamp and payload parameters everywhere
 - Moved static functions to a factory
