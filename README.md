@@ -21,6 +21,8 @@ $ composer require tuupola/ksuid
 
 Included Base62 implementation has both PHP and [GMP](http://php.net/manual/en/ref.gmp.php) based encoders. By default encoder and decoder will use GMP functions if the extension is installed. If GMP is not available pure PHP encoder will be used instead.
 
+Note! Throughout the code the term `timestamp` refers to KSUID timestamp. The term `unixtime` refers to the traditional Unix time. KSUID timestamp and Unix time have different Epoch.
+
 ```php
 use Tuupola\Ksuid;
 
@@ -39,16 +41,25 @@ $datetime = (new \DateTimeImmutable)
 print $datetime->format("Y-m-d H:i:s"); /* 2017-05-17 01:49:21 */
 ```
 
-If you prefer static syntax you can use the provided factory.
+If you prefer static syntax you can use one of the provided factories.
 
 ```php
 use Tuupola\KsuidFactory as Ksuid;
 
 $ksuid = Ksuid::create();
+
 $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
 
 $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
 $ksuid = Ksuid::fromBytes($binary);
+
+$ksuid = KsuidFactory::fromTimestamp(94985761);
+
+$ksuid = KsuidFactory::fromUnixtime(1494985761);
+
+$timestamp = 94985761;
+$payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
+$ksuid = KsuidFactory::fromParts($timestamp, $payload);
 ```
 
 ## Testing
