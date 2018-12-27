@@ -113,4 +113,11 @@ class KsuidFactoryTest extends TestCase
         $this->assertEquals(94985761, $ksuid->timestamp());
         $this->assertEquals(1494985761, $ksuid->unixtime());
     }
+
+    public function testShouldCreateFromUnixtime()
+    {
+        $ksuid = KsuidFactory::fromUnixtime(1494985761);
+        $this->assertEquals(94985761, $ksuid->timestamp());
+        $this->assertEquals(1494985761, $ksuid->unixtime());
+    }
 }

@@ -44,7 +44,7 @@ If you prefer static syntax you can use the provided factory.
 ```php
 use Tuupola\KsuidFactory as Ksuid;
 
-$ksuid = Ksuid::generate();
+$ksuid = Ksuid::create();
 $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
 
 $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");

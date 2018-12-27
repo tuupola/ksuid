@@ -48,6 +48,12 @@ class KsuidFactory
         return new Ksuid($timestamp);
     }
 
+    public static function fromUnixtime($unixtime)
+    {
+        $timestamp = $unixtime - Ksuid::EPOCH;
+        return new Ksuid($timestamp);
+    }
+
     public static function fromString($string)
     {
         $decoded = (new Base62)->decode($string);
