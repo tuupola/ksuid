@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 ### Changed
 - Switched order of timestamp and payload parameters everywhere
 - Moved static functions to a factory
-  ```
+  ```php
   use Tuupola\KsuidFactory as Ksuid;
 
   $ksuid = KsuidFactory::create();
@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 - Additional factory methods
-  ```
+  ```php
   use Tuupola\KsuidFactory as Ksuid;
 
   $ksuid = KsuidFactory::fromTimestamp(94985761);
@@ -29,7 +29,7 @@ All notable changes to this project will be documented in this file, in reverse 
   $timestamp = 94985761;
   $payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
   $ksuid = KsuidFactory::fromParts($timestamp, $payload);
-```
+  ```
 
 ## [0.1.4](https://github.com/tuupola/ksuid/compare/0.1.3...0.1.4) - 2018-12-09
 ### Fixed
