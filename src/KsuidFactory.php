@@ -33,7 +33,7 @@ namespace Tuupola;
 
 class KsuidFactory
 {
-    public static function generate($timestamp = null, $payload = null)
+    public static function fromParts($timestamp = null, $payload = null)
     {
         return new Ksuid($timestamp, $payload);
     }

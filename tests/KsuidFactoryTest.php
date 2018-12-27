@@ -42,10 +42,10 @@ class KsuidFactoryTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testGenerateShouldReturnKsuidInstance()
-    {
-        $this->assertInstanceOf(Ksuid::class, KsuidFactory::generate());
-    }
+    // public function testGenerateShouldReturnKsuidInstance()
+    // {
+    //     $this->assertInstanceOf(Ksuid::class, KsuidFactory::generate());
+    // }
 
     /* https://segment.com/blog/a-brief-history-of-the-uuid/ */
     public function testShouldCreateFromString()
@@ -90,6 +90,20 @@ class KsuidFactoryTest extends TestCase
         $this->assertEquals(
             "2017-05-17 01:49:21",
             $datetime->format("Y-m-d H:i:s")
+        );
+    }
+
+    public function testShouldCreateFromParts()
+    {
+        $payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
+        $timestamp = 94985761;
+        $ksuid = KsuidFactory::fromParts($timestamp, $payload);
+
+        $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
+        $this->assertEquals(94985761, $ksuid->timestamp());
+        $this->assertEquals(
+            "d7b6fe8cd7cff211704d8e7b9421210b",
+            bin2hex($ksuid->payload())
         );
     }
 
