@@ -38,6 +38,11 @@ class KsuidFactory
         return new Ksuid($timestamp, $payload);
     }
 
+    public static function fromTimestamp($timestamp)
+    {
+        return new Ksuid($timestamp);
+    }
+
     public static function fromString($string)
     {
         $decoded = (new Base62)->decode($string);
