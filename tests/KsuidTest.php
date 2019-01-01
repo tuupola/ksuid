@@ -65,7 +65,12 @@ class KsuidTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $payload = hex2bin("d7b6fe80");
-        $timestamp = 94985761;
-        new Ksuid($timestamp, $payload);
+        new Ksuid(null, $payload);
+    }
+
+    public function testShouldThrowWithInvalidTimestamp()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        new Ksuid("foo");
     }
 }

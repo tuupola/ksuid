@@ -45,6 +45,13 @@ class Ksuid
 
     public function __construct($timestamp = null, $payload = null)
     {
+        $type = gettype($timestamp);
+        if ("integer" !== $type && "NULL" !== $type) {
+            throw new InvalidArgumentException(
+                "Timestamp must either null or integer"
+            );
+        }
+
         $this->payload = $payload;
         $this->timestamp = $timestamp;
 
