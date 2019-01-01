@@ -13,12 +13,12 @@ All notable changes to this project will be documented in this file, in reverse 
   ```php
   use Tuupola\KsuidFactory as Ksuid;
 
-  $ksuid = KsuidFactory::create();
+  $ksuid = Ksuid::create();
 
-  $ksuid = KsuidFactory::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
+  $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
 
   $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
-  $ksuid = KsuidFactory::fromBytes($binary);
+  $ksuid = Ksuid::fromBytes($binary);
   ```
 
 ### Added
@@ -26,13 +26,13 @@ All notable changes to this project will be documented in this file, in reverse 
   ```php
   use Tuupola\KsuidFactory as Ksuid;
 
-  $ksuid = KsuidFactory::fromTimestamp(94985761);
+  $ksuid = Ksuid::fromTimestamp(94985761);
 
-  $ksuid = KsuidFactory::fromUnixtime(1494985761);
+  $ksuid = Ksuid::fromUnixtime(1494985761);
 
   $timestamp = 94985761;
   $payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
-  $ksuid = KsuidFactory::fromParts($timestamp, $payload);
+  $ksuid = Ksuid::fromParts($timestamp, $payload);
   ```
 
 ## [0.1.4](https://github.com/tuupola/ksuid/compare/0.1.3...0.1.4) - 2018-12-09
