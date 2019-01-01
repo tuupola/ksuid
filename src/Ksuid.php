@@ -52,6 +52,19 @@ class Ksuid
             );
         }
 
+        $type = gettype($payload);
+        if ("string" !== $type && "NULL" !== $type) {
+            throw new InvalidArgumentException(
+                "Payload must either null or string"
+            );
+        }
+
+        if ($payload && self::PAYLOAD_SIZE !== strlen($payload)) {
+            throw new InvalidArgumentException(
+                sprintf("Payload must be exactly %d bytes", self::PAYLOAD_SIZE)
+            );
+        }
+
         $this->payload = $payload;
         $this->timestamp = $timestamp;
 
@@ -60,12 +73,6 @@ class Ksuid
         }
         if (empty($timestamp)) {
             $this->timestamp = time() - self::EPOCH;
-        }
-
-        if (self::PAYLOAD_SIZE !== strlen($this->payload)) {
-            throw new InvalidArgumentException(
-                sprintf("Payload must be exactly %d bytes", self::PAYLOAD_SIZE)
-            );
         }
     }
 

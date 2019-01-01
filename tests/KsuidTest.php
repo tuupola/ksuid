@@ -68,6 +68,14 @@ class KsuidTest extends TestCase
         new Ksuid(null, $payload);
     }
 
+    public function testShouldThrowWithNonStringPayload()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $payload = 123456;
+        new Ksuid(null, $payload);
+    }
+
     public function testShouldThrowWithInvalidTimestamp()
     {
         $this->expectException(InvalidArgumentException::class);
