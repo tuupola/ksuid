@@ -81,4 +81,28 @@ class KsuidTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         new Ksuid("foo");
     }
+
+    /* https://github.com/segmentio/ksuid/blob/master/README.md */
+    public function testShouldMatchValuesFromReadme()
+    {
+        $ksuid1 = new Ksuid(107611700, hex2bin("9850EEEC191BF4FF26F99315CE43B0C8"));
+        $ksuid2 = new Ksuid(107611700, hex2bin("CC55072555316F45B8CA2D2979D3ED0A"));
+        $ksuid3 = new Ksuid(107611700, hex2bin("BA1C205D6177F0992D15EE606AE32238"));
+        $ksuid4 = new Ksuid(107611700, hex2bin("67517BA309EA62AE7991B27BB6F2FCAC"));
+        $ksuid5 = new Ksuid(107610780, hex2bin("73FC1AA3B2446246D6E89FCD909E8FE8"));
+
+        $this->assertEquals("0uk1Hbc9dQ9pxyTqJ93IUrfhdGq", (string) $ksuid1);
+        $this->assertEquals("0uk1HdCJ6hUZKDgcxhpJwUl5ZEI", (string) $ksuid2);
+        $this->assertEquals("0uk1HcdvF0p8C20KtTfdRSB9XIm", (string) $ksuid3);
+        $this->assertEquals("0uk1Ha7hGJ1Q9Xbnkt0yZgNwg3g", (string) $ksuid4);
+        $this->assertEquals("0ujzPyRiIAffKhBux4PvQdDqMHY", (string) $ksuid5);
+    }
+
+    /* https://segment.com/blog/a-brief-history-of-the-uuid/ */
+    public function testShouldMatchValuesFromBlog()
+    {
+        $ksuid1 = new Ksuid(94985761, hex2bin("D7B6FE8CD7CFF211704D8E7B9421210B"));
+
+        $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid1);
+    }
 }
