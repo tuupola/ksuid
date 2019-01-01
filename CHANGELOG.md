@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## [0.3.0](https://github.com/tuupola/ksuid/compare/0.2.0...master) - unreleased
+## [0.3.0](https://github.com/tuupola/ksuid/compare/0.2.0...0.3.0) - 2019-01-01
 ### Changed
 - Renamed `KsuidFactory::fromParts()` to `KsuidFactory::fromTimestampAndPayload()`
 
