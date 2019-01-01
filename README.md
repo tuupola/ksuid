@@ -59,7 +59,7 @@ $ksuid = KsuidFactory::fromUnixtime(1494985761);
 
 $timestamp = 94985761;
 $payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
-$ksuid = KsuidFactory::fromParts($timestamp, $payload);
+$ksuid = KsuidFactory::fromTimestampAndPayload($timestamp, $payload);
 ```
 
 ## Testing

@@ -93,11 +93,11 @@ class KsuidFactoryTest extends TestCase
         );
     }
 
-    public function testShouldCreateFromParts()
+    public function testShouldCreateFromTimestampAndPayload()
     {
         $payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
         $timestamp = 94985761;
-        $ksuid = KsuidFactory::fromParts($timestamp, $payload);
+        $ksuid = KsuidFactory::fromTimestampAndPayload($timestamp, $payload);
 
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid);
         $this->assertEquals(94985761, $ksuid->timestamp());

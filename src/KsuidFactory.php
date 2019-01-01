@@ -38,11 +38,6 @@ class KsuidFactory
         return new Ksuid;
     }
 
-    public static function fromParts($timestamp = null, $payload = null)
-    {
-        return new Ksuid($timestamp, $payload);
-    }
-
     public static function fromTimestamp($timestamp)
     {
         return new Ksuid($timestamp);
@@ -52,6 +47,11 @@ class KsuidFactory
     {
         $timestamp = $unixtime - Ksuid::EPOCH;
         return new Ksuid($timestamp);
+    }
+
+    public static function fromTimestampAndPayload($timestamp, $payload)
+    {
+        return new Ksuid($timestamp, $payload);
     }
 
     public static function fromString($string)
