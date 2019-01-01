@@ -3,17 +3,21 @@
 help:
 	@echo ""
 	@echo "Available tasks:"
-	@echo "    lint    Run linter and code style checker"
-	@echo "    unit    Run unit tests and generate coverage"
-	@echo "    static  Run static analysis"
-	@echo "    test    Run linter, static analysis and unit tests"
-	@echo "    watch   Run linter and unit tests when any of the source files change"
-	@echo "    deps    Install dependencies"
-	@echo "    all     Install dependencies and run linter and unit tests"
+	@echo "    lint     Run linter and code style checker"
+	@echo "    unit     Run unit tests and generate coverage"
+	@echo "    static   Run static analysis"
+	@echo "    test     Run linter, static analysis and unit tests"
+	@echo "    watch    Run linter and unit tests when any of the source files change"
+	@echo "    deps     Install latest dependencies"
+	@echo "    lowdeps  Install lowest allowed dependencies"
+	@echo "    all      Install dependencies and run linter and unit tests"
 	@echo ""
 
 deps:
 	composer install --prefer-dist
+
+lowdeps:
+	composer update --prefer-lowest --prefer-stable --prefer-dist
 
 lint:
 	vendor/bin/phplint . --exclude=vendor/
