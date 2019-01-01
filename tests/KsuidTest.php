@@ -33,9 +33,7 @@ namespace Tuupola;
 
 use PHPUnit\Framework\TestCase;
 use Tuupola\Ksuid;
-use Tuupola\Base62;
-use DateTimeImmutable;
-use DateTimeZone;
+use InvalidArgumentException;
 
 class KsuidTest extends TestCase
 {
@@ -60,5 +58,14 @@ class KsuidTest extends TestCase
     {
         $ksuid = new Ksuid;
         $this->assertEquals(27, strlen((string)$ksuid));
+    }
+
+    public function testShouldThrowWithInvalidPayload()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $payload = hex2bin("d7b6fe80");
+        $timestamp = 94985761;
+        new Ksuid($timestamp, $payload);
     }
 }

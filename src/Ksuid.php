@@ -31,6 +31,8 @@ SOFTWARE.
 
 namespace Tuupola;
 
+use InvalidArgumentException;
+
 class Ksuid
 {
     const TIMESTAMP_SIZE = 4;
@@ -51,6 +53,12 @@ class Ksuid
         }
         if (empty($timestamp)) {
             $this->timestamp = time() - self::EPOCH;
+        }
+
+        if (self::PAYLOAD_SIZE !== strlen($this->payload)) {
+            throw new InvalidArgumentException(
+                sprintf("Payload must be exactly %d bytes", self::PAYLOAD_SIZE)
+            );
         }
     }
 
