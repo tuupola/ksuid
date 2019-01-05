@@ -53,13 +53,13 @@ $ksuid = Ksuid::fromString("0o5Fs0EELR0fUjHjbCnEtdUwQe3");
 $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
 $ksuid = Ksuid::fromBytes($binary);
 
-$ksuid = KsuidFactory::fromTimestamp(94985761);
+$ksuid = Ksuid::fromTimestamp(94985761);
 
-$ksuid = KsuidFactory::fromUnixtime(1494985761);
+$ksuid = Ksuid::fromUnixtime(1494985761);
 
 $timestamp = 94985761;
 $payload = hex2bin("d7b6fe8cd7cff211704d8e7b9421210b");
-$ksuid = KsuidFactory::fromTimestampAndPayload($timestamp, $payload);
+$ksuid = Ksuid::fromTimestampAndPayload($timestamp, $payload);
 ```
 
 ## Testing
