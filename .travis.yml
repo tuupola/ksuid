@@ -1,7 +1,6 @@
 language: php
 
 php:
-    - 7.0
     - 7.1
     - 7.2
     - 7.3
@@ -13,12 +12,9 @@ matrix:
     include:
         - php: 7.1
           env: DEPENDENCIES=lowest
-        - php: 7.2
-          env: DEPENDENCIES=lowest
 
 before_script:
     - travis_retry composer self-update
-    - if [[ $TRAVIS_PHP_VERSION == "7.0" ]]; then composer remove --dev phpstan/phpstan; fi
     - travis_retry composer install --no-interaction
     - if [ "$DEPENDENCIES" = "lowest" ]; then travis_retry composer update --prefer-lowest --prefer-stable --no-interaction; fi;
 
