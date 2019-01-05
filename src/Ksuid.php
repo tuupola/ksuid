@@ -56,10 +56,10 @@ class Ksuid
         $this->payload = $payload;
         $this->timestamp = $timestamp;
 
-        if (empty($payload)) {
+        if (null === $payload) {
             $this->payload = random_bytes(self::PAYLOAD_SIZE);
         }
-        if (empty($timestamp)) {
+        if (null === $timestamp) {
             $this->timestamp = time() - self::EPOCH;
         }
     }

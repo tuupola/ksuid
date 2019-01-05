@@ -108,4 +108,12 @@ class KsuidTest extends TestCase
 
         $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", (string) $ksuid1);
     }
+
+    public function testShouldHandleLeadingZeroes()
+    {
+        $ksuid = new Ksuid(6, hex2bin("000000000000000000000000000000FF"));
+
+        $this->assertEquals("00000kkODHa8Ws2cSwkqjKhWDkt", (string) $ksuid);
+        $this->assertEquals(27, strlen((string)$ksuid));
+    }
 }

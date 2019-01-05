@@ -64,10 +64,12 @@ class KsuidFactory
 
     public static function fromBytes(string $bytes): Ksuid
     {
-        $bytes = ltrim($bytes, "\0x00");
-        $timestamp = substr($bytes, 0, Ksuid::TIMESTAMP_SIZE);
+        $timestamp = substr($bytes, 0, -Ksuid::PAYLOAD_SIZE);
+        $timestamp = substr($timestamp, -Ksuid::TIMESTAMP_SIZE);
         $timestamp = unpack("Nuint", $timestamp);
-        $payload = substr($bytes, Ksuid::TIMESTAMP_SIZE, Ksuid::PAYLOAD_SIZE);
+
+        $payload = substr($bytes, -Ksuid::PAYLOAD_SIZE);
+
         return new Ksuid($timestamp["uint"], $payload);
     }
 }
