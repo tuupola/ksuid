@@ -17,6 +17,12 @@ Install with [composer](https://getcomposer.org/).
 $ composer require tuupola/ksuid
 ```
 
+This branch requires PHP 7.1 or up. The older `1.x` branch supports also PHP 5.6 and 7.0.
+
+``` bash
+$ composer require "tuupola/ksuid:^1.0"
+```
+
 ## Usage
 
 Included Base62 implementation has both PHP and [GMP](http://php.net/manual/en/ref.gmp.php) based encoders. By default encoder and decoder will use GMP functions if the extension is installed. If GMP is not available pure PHP encoder will be used instead.
