@@ -33,34 +33,34 @@ namespace Tuupola;
 
 class KsuidFactory
 {
-    public static function create()
+    public static function create(): Ksuid
     {
         return new Ksuid;
     }
 
-    public static function fromTimestamp($timestamp)
+    public static function fromTimestamp(int $timestamp): Ksuid
     {
         return new Ksuid($timestamp);
     }
 
-    public static function fromUnixtime($unixtime)
+    public static function fromUnixtime(int $unixtime): Ksuid
     {
         $timestamp = $unixtime - Ksuid::EPOCH;
         return new Ksuid($timestamp);
     }
 
-    public static function fromTimestampAndPayload($timestamp, $payload)
+    public static function fromTimestampAndPayload(int $timestamp, string $payload): Ksuid
     {
         return new Ksuid($timestamp, $payload);
     }
 
-    public static function fromString($string)
+    public static function fromString(string $string): Ksuid
     {
         $decoded = (new Base62)->decode($string);
         return self::fromBytes($decoded);
     }
 
-    public static function fromBytes($bytes)
+    public static function fromBytes(string $bytes): Ksuid
     {
         $bytes = ltrim($bytes, "\0x00");
         $timestamp = substr($bytes, 0, Ksuid::TIMESTAMP_SIZE);

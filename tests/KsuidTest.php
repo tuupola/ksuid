@@ -34,6 +34,7 @@ namespace Tuupola;
 use PHPUnit\Framework\TestCase;
 use Tuupola\Ksuid;
 use InvalidArgumentException;
+use TypeError;
 
 class KsuidTest extends TestCase
 {
@@ -78,7 +79,7 @@ class KsuidTest extends TestCase
 
     public function testShouldThrowWithInvalidTimestamp()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(TypeError::class);
         new Ksuid("foo");
     }
 

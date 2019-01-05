@@ -43,7 +43,7 @@ class Ksuid
     private $timestamp;
     private $payload;
 
-    public function __construct($timestamp = null, $payload = null)
+    public function __construct(int $timestamp = null, string $payload = null)
     {
         $type = gettype($timestamp);
         if ("integer" !== $type && "NULL" !== $type) {
@@ -76,12 +76,12 @@ class Ksuid
         }
     }
 
-    public function bytes()
+    public function bytes(): string
     {
         return pack("N", $this->timestamp) . $this->payload;
     }
 
-    public function string()
+    public function string(): string
     {
         $encoded = (new Base62)->encode($this->bytes());
         if ($padding = self::ENCODED_SIZE - strlen($encoded)) {
@@ -90,22 +90,22 @@ class Ksuid
         return $encoded;
     }
 
-    public function payload()
+    public function payload(): string
     {
         return $this->payload;
     }
 
-    public function timestamp()
+    public function timestamp(): int
     {
         return $this->timestamp;
     }
 
-    public function unixtime()
+    public function unixtime(): int
     {
         return $this->timestamp + self::EPOCH;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->string();
     }
