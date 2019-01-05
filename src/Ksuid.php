@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 
 Copyright (c) 2017-2019 Mika Tuupola
@@ -45,20 +47,6 @@ class Ksuid
 
     public function __construct(int $timestamp = null, string $payload = null)
     {
-        $type = gettype($timestamp);
-        if ("integer" !== $type && "NULL" !== $type) {
-            throw new InvalidArgumentException(
-                "Timestamp must either null or integer"
-            );
-        }
-
-        $type = gettype($payload);
-        if ("string" !== $type && "NULL" !== $type) {
-            throw new InvalidArgumentException(
-                "Payload must either null or string"
-            );
-        }
-
         if ($payload && self::PAYLOAD_SIZE !== strlen($payload)) {
             throw new InvalidArgumentException(
                 sprintf("Payload must be exactly %d bytes", self::PAYLOAD_SIZE)

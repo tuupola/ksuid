@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 
 Copyright (c) 2017-2019 Mika Tuupola
@@ -71,7 +73,7 @@ class KsuidTest extends TestCase
 
     public function testShouldThrowWithNonStringPayload()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(TypeError::class);
 
         $payload = 123456;
         new Ksuid(null, $payload);
