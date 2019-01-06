@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## [1.0.1](https://github.com/tuupola/ksuid/compare/1.0.0...1.0.1) - 2019-01-06
+### Fixed
+- Parsing a KSUID whose timestamp is far away in history failed in some cases. This happened when the base62 string has been zero padded to 27 characters. Padding causes the internal byte representation to change.
+
 ## [1.0.0](https://github.com/tuupola/ksuid/compare/0.3.0...1.0.0) - 2019-01-05
 
 This is same previous release but released as stable.
