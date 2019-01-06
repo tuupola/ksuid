@@ -120,4 +120,30 @@ class KsuidFactoryTest extends TestCase
         $this->assertEquals(94985761, $ksuid->timestamp());
         $this->assertEquals(1494985761, $ksuid->unixtime());
     }
+
+    public function testShouldHandleLeadingZeroes()
+    {
+        $ksuid = KsuidFactory::fromString("00000kkODHa8Ws2cSwkqjKhWDkt");
+        $this->assertEquals(6, $ksuid->timestamp());
+        $this->assertEquals(hex2bin("000000000000000000000000000000FF"), $ksuid->payload());
+        $this->assertEquals("00000kkODHa8Ws2cSwkqjKhWDkt", (string) $ksuid);
+    }
+
+    /* https://github.com/segmentio/ksuid/blob/master/ksuid.go#L37 */
+    public function testShouldHandleMaximumValue()
+    {
+        $binary = hex2bin("ffffffffffffffffffffffffffffffffffffffff");
+        $ksuid = KsuidFactory::fromBytes($binary);
+
+        $this->assertEquals("aWgEPTl1tmebfsQzFP4bxwgy80V", (string) $ksuid);
+    }
+
+    /* https://github.com/segmentio/ksuid/blob/master/ksuid.go#L34 */
+    public function testShouldHandleMinimumValue()
+    {
+        $binary = hex2bin("0000000000000000000000000000000000000000");
+        $ksuid = KsuidFactory::fromBytes($binary);
+
+        $this->assertEquals("000000000000000000000000000", (string) $ksuid);
+    }
 }
