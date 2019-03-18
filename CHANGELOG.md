@@ -72,6 +72,6 @@ This is same previous release but released as stable.
 ### Fixed
 - Allow using tuupola/base62:^0.9.0
 
-0.1.0 - 2017-06-09
+## 0.1.0 - 2017-06-09
 
 Initial release.
