@@ -80,12 +80,12 @@ class Ksuid
 
     public function payload(): string
     {
-        return $this->payload;
+        return (string) $this->payload;
     }
 
     public function timestamp(): int
     {
-        return $this->timestamp;
+        return (int) $this->timestamp;
     }
 
     public function unixtime(): int
