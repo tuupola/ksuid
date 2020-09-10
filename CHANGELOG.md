@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## [2.1.0](https://github.com/tuupola/ksuid/compare/2.0.0...2.1.0) - unreleased
+### Added
+- Allow installing with PHP 8 ([#8](https://github.com/tuupola/ksuid/pull/8)).
+
 ## [2.0.0](https://github.com/tuupola/ksuid/compare/1.0.1...2.0.0) - 2019-01-06
 
 This is same previous release but targets modern PHP versions.
