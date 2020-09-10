@@ -6,18 +6,22 @@ php:
     - 7.3
     - 7.4
 
-matrix:
+env:
+    global:
+        - COMPOSER_ARGS="--no-interaction"
+jobs:
+    fast_finish: true
     allow_failures:
         - php: nightly
     include:
         - php: 7.1
           env: DEPENDENCIES=lowest
         - php: nightly
-          env: PLATFORM_REQUIREMENTS=--ignore-platform-reqs
+          env: COMPOSER_ARGS="--no-interaction --ignore-platform-reqs"
 
 before_script:
     - travis_retry composer self-update
-    - travis_retry composer install --no-interaction $PLATFORM_REQUIREMENTS
+    - travis_retry composer install $COMPOSER_ARGS
     - if [ "$DEPENDENCIES" = "lowest" ]; then travis_retry composer update --prefer-lowest --prefer-stable --no-interaction; fi;
 
 script:
