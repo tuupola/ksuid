@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## [1.0.2](https://github.com/tuupola/ksuid/compare/1.0.1...master) - unreleased
+## [1.0.2](https://github.com/tuupola/ksuid/compare/1.0.1...1.0.2) - 2020-09-30
 ### Fixed
 - Allow installing with `paragonie/random_compat` `1.x` ([#9](https://github.com/tuupola/ksuid/issues/9), [#10](https://github.com/tuupola/ksuid/pull/10)).
 
