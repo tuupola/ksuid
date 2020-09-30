@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## [1.0.2](https://github.com/tuupola/ksuid/compare/1.0.1...master) - unreleased
+### Fixed
+- Allow installing with `paragonie/random_compat` `1.x` ([#9](https://github.com/tuupola/ksuid/issues/9), [#10](https://github.com/tuupola/ksuid/pull/10)).
+
 ## [1.0.1](https://github.com/tuupola/ksuid/compare/1.0.0...1.0.1) - 2019-01-06
 ### Fixed
 - Parsing a KSUID whose timestamp is far away in history failed in some cases. This happened when the base62 string has been zero padded to 27 characters. Padding causes the internal byte representation to change.
