@@ -72,10 +72,7 @@ class Ksuid
     public function string(): string
     {
         $encoded = (new Base62)->encode($this->bytes());
-        if ($padding = self::ENCODED_SIZE - strlen($encoded)) {
-            $encoded = str_repeat("0", $padding) . $encoded;
-        }
-        return $encoded;
+        return str_pad($encoded, self::ENCODED_SIZE, "0", STR_PAD_LEFT);
     }
 
     public function payload(): string
