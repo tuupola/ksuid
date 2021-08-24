@@ -6,7 +6,7 @@ This library implements the [K-Sortable Globally Unique IDs](https://github.com/
 
 [![Latest Version](https://img.shields.io/packagist/v/tuupola/ksuid.svg?style=flat-square)](https://packagist.org/packages/tuupola/ksuid)
 [![Downloads](https://img.shields.io/packagist/dm/tuupola/ksuid.svg)](https://packagist.org/packages/tuupola/ksuid)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/tuupola/ksuid/blob/2.x/LICENSE)
 [![Build Status](https://img.shields.io/github/workflow/status/tuupola/ksuid/Tests/2.x?style=flat-square)](https://github.com/tuupola/ksuid/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/tuupola/ksuid.svg?style=flat-square)](https://codecov.io/github/tuupola/ksuid)
 
@@ -91,4 +91,4 @@ If you discover any security related issues, please email tuupola@appelsiini.net
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/tuupola/ksuid/blob/2.x/LICENSE) for more information.
