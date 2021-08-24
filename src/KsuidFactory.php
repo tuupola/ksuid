@@ -66,7 +66,8 @@ class KsuidFactory
     {
         $timestamp = substr($bytes, 0, -Ksuid::PAYLOAD_SIZE);
         $timestamp = substr($timestamp, -Ksuid::TIMESTAMP_SIZE);
-        $timestamp = unpack("Nuint", $timestamp);
+        /* TODO: Array cast is a kludgle to make PHPStan happy. */
+        $timestamp = (array)unpack("Nuint", $timestamp);
 
         $payload = substr($bytes, -Ksuid::PAYLOAD_SIZE);
 
