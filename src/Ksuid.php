@@ -45,7 +45,7 @@ class Ksuid
     private $timestamp;
     private $payload;
 
-    public function __construct(int $timestamp = null, string $payload = null)
+    public function __construct(?int $timestamp = null, ?string $payload = null)
     {
         if ($payload && self::PAYLOAD_SIZE !== strlen($payload)) {
             throw new InvalidArgumentException(
