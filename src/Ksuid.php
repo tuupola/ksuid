@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /*
 
-Copyright (c) 2017-2021 Mika Tuupola
+Copyright (c) 2017-2025 Mika Tuupola
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ class Ksuid
     private $timestamp;
     private $payload;
 
-    public function __construct(int $timestamp = null, string $payload = null)
+    public function __construct(?int $timestamp = null, ?string $payload = null)
     {
         if ($payload && self::PAYLOAD_SIZE !== strlen($payload)) {
             throw new InvalidArgumentException(
