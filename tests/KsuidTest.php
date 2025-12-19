@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /*
 
-Copyright (c) 2017-2021 Mika Tuupola
+Copyright (c) 2017-2025 Mika Tuupola
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -115,5 +115,30 @@ class KsuidTest extends TestCase
 
         $this->assertEquals("00000kkODHa8Ws2cSwkqjKhWDkt", (string) $ksuid);
         $this->assertEquals(27, strlen((string)$ksuid));
+    }
+
+    public function testShouldReturnPayload()
+    {
+        $payload = hex2bin("D7B6FE8CD7CFF211704D8E7B9421210B");
+        $ksuid = new Ksuid(94985761, $payload);
+        $this->assertEquals($payload, $ksuid->payload());
+    }
+
+    public function testShouldReturnTimestamp()
+    {
+        $ksuid = new Ksuid(94985761, hex2bin("D7B6FE8CD7CFF211704D8E7B9421210B"));
+        $this->assertEquals(94985761, $ksuid->timestamp());
+    }
+
+    public function testShouldReturnUnixtime()
+    {
+        $ksuid = new Ksuid(94985761, hex2bin("D7B6FE8CD7CFF211704D8E7B9421210B"));
+        $this->assertEquals(1494985761, $ksuid->unixtime());
+    }
+
+    public function testShouldReturnString()
+    {
+        $ksuid = new Ksuid(94985761, hex2bin("D7B6FE8CD7CFF211704D8E7B9421210B"));
+        $this->assertEquals("0o5Fs0EELR0fUjHjbCnEtdUwQe3", $ksuid->string());
     }
 }
