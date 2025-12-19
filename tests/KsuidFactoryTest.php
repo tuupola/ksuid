@@ -152,11 +152,24 @@ class KsuidFactoryTest extends TestCase
 
     public function testFromBytesShouldThrowWithInvalidLength()
     {
-        $this->expectException(InvalidArgumentException::class);
-        //$binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
-        /* Last byte removed */
+        /* Temporarily silence warnings so we can see the Exceptions. */
+        set_error_handler(function () {
+            return true;
+        }, E_WARNING);
+
         $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b942121");
-        KsuidFactory::fromBytes($binary);
+
+        while (strlen($binary) > 0) {
+            try {
+                KsuidFactory::fromBytes($binary);
+                $this->fail("Expected InvalidArgumentException for " . strlen($binary) . " bytes");
+            } catch (InvalidArgumentException $e) {
+                $this->assertTrue(true);
+            }
+            $binary = substr($binary, 0, -1);
+        }
+
+        restore_error_handler();
     }
 
     public function testFromStringShouldThrowWithInvalidCharacters()
