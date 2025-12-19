@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /*
 
-Copyright (c) 2017-2021 Mika Tuupola
+Copyright (c) 2017-2025 Mika Tuupola
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,7 @@ namespace Tuupola;
 use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use DateTimeZone;
+use InvalidArgumentException;
 
 class KsuidFactoryTest extends TestCase
 {
@@ -147,5 +148,20 @@ class KsuidFactoryTest extends TestCase
         $ksuid = KsuidFactory::fromBytes($binary);
 
         $this->assertEquals("000000000000000000000000000", (string) $ksuid);
+    }
+
+    public function testFromBytesShouldThrowWithInvalidLength()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        //$binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b9421210b");
+        /* Last byte removed */
+        $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b942121");
+        KsuidFactory::fromBytes($binary);
+    }
+
+    public function testFromStringShouldThrowWithInvalidCharacters()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        KsuidFactory::fromString("invalid!@#characters");
     }
 }
