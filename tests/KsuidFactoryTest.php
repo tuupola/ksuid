@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /*
 
-Copyright (c) 2017-2021 Mika Tuupola
+Copyright (c) 2017-2025 Mika Tuupola
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,7 @@ namespace Tuupola;
 use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use DateTimeZone;
+use InvalidArgumentException;
 
 class KsuidFactoryTest extends TestCase
 {
@@ -147,5 +148,33 @@ class KsuidFactoryTest extends TestCase
         $ksuid = KsuidFactory::fromBytes($binary);
 
         $this->assertEquals("000000000000000000000000000", (string) $ksuid);
+    }
+
+    public function testFromBytesShouldThrowWithInvalidLength()
+    {
+        /* Temporarily silence warnings so we can see the Exceptions. */
+        set_error_handler(function () {
+            return true;
+        }, E_WARNING);
+
+        $binary = hex2bin("05a95e21d7b6fe8cd7cff211704d8e7b942121");
+
+        while (strlen($binary) > 0) {
+            try {
+                KsuidFactory::fromBytes($binary);
+                $this->fail("Expected InvalidArgumentException for " . strlen($binary) . " bytes");
+            } catch (InvalidArgumentException $e) {
+                $this->assertTrue(true);
+            }
+            $binary = substr($binary, 0, -1);
+        }
+
+        restore_error_handler();
+    }
+
+    public function testFromStringShouldThrowWithInvalidCharacters()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        KsuidFactory::fromString("invalid!@#characters");
     }
 }
